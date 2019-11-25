@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String Timer = formatter.format(date);
         //set title of progress bar
-        pd.setTitle("Add text");
+        pd.setTitle("Update...");
         //show progress bar when user click save button
         pd.show();
 
@@ -280,7 +280,8 @@ public class MainActivity extends AppCompatActivity {
             showImageImportDialog();
         }
         if (id == R.id.Logout) {
-            user.mAuth.signOut();
+            FirebaseAuth.getInstance().signOut();
+           // user.mAuth.signOut();
             finish();
             startActivity(new Intent(MainActivity.this,Login.class));
 

@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        pd = new ProgressDialog(this);
         btRegister =(Button)findViewById(R.id.bTLRegister);
         btLogin =(Button)findViewById(R.id.btLlogin);
         etEmail = (EditText) findViewById(R.id.eTLemail);
@@ -66,14 +66,20 @@ public class Login extends AppCompatActivity {
                 Toast.makeText(Login.this, "Enter Password", Toast.LENGTH_SHORT).show();
                 return;
             }
+            //set text of progress doalog
+            pd.setTitle("Signin");
+            //show progress dialog
+            pd.show();
             mAuth.signInWithEmailAndPassword(email, pass)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
+                                pd.dismiss();
                                 Toast.makeText(Login.this, "Welcome "+email, Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(Login.this,MainActivity.class));
                             } else {
+                                pd.dismiss();
                                 Toast.makeText(Login.this, "Login error", Toast.LENGTH_SHORT).show();
                             }
 
