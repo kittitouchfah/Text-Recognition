@@ -302,7 +302,7 @@ public class MainActivity extends AppCompatActivity {
                     //camera option clicked
                     if (!checkCameraPermission()) {
                         //camera permission not allow, request it
-                        requestCamraPermission();
+                        requestCameraPermission();
                     } else {
                         //permission allowed, take picture
                         pickCamera();
@@ -357,7 +357,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void requestCamraPermission() {
+    private void requestCameraPermission() {
         ActivityCompat.requestPermissions(this, cameraPermission, CAMERA_REQUEST_CODE);
     }
 
